@@ -1,13 +1,15 @@
 import React from "react";
 import Card from "./Card";
 
-function CategorySlider() {
+function CategorySlider({ type }) {
+
 
     return (
         <>
-            <div>
-                <p>Category Slider</p>
-                <Card />
+            <div className="d-flex overflow-x-scroll gap-4">
+                { type.map((element) => {
+                    return <Card key={element.id} elementData = {element} />
+                })}
             </div>
         </>
     )

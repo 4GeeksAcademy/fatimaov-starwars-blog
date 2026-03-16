@@ -1,4 +1,4 @@
-const baseUrl = 'https://www.swapi.tech/api'
+const baseUrl = 'https://swapi.dev/api/'
 
 export async function getCharacters() {
     const endPoint = '/people/';
@@ -7,38 +7,29 @@ export async function getCharacters() {
     try {
         const response = await fetch(urlToFetch);
         const responseJS = await response.json();
-        const dataList = responseJS.results;
-        const dataDetails = [];
-
+        const dataList = responseJS.results
+        const dataDetail = [];
         for (const i in dataList) {
-            try {
-                const response = await fetch(urlToFetch + dataList[i].uid)
-                const responseJS = await response.json();
-                const dataToPush = {
-                    name: responseJS.result.properties.name,
-                    gender: responseJS.result.properties.gender,
-                    skin_color: responseJS.result.properties.skin_color,
-                    hair_color: responseJS.result.properties.hair_color,
-                    eye_color: responseJS.result.properties.eye_color,
-                    height: responseJS.result.properties.height,
-                    birth_year: responseJS.result.properties.birth_year,
-                    id: responseJS.result._id,
-                }
-                dataDetails.push(dataToPush)
+            const characterData = {
+                name: dataList[i].name,
+                gender: dataList[i].gender,
+                skinColor: dataList[i].skin_color,
+                hairColor: dataList[i].hair_color,
+                eyeColor: dataList[i].eye_color,
+                height: dataList[i].height,
+                birthYear: dataList[i].birth_year,
+                id: (dataList[i].url).replace('https://swapi.dev/api/people/', '') ,
 
-            } catch (error) {
-                console.error(`Get character id:${dataList[i].uid}`, error)
             }
+            dataDetail.push(characterData)
         }
-
-        console.log(dataDetails)
+        return dataDetail;
 
     } catch (error) {
         console.error('Get characters', error);
     }
 }
 
-getCharacters()
 
 export async function getPlanets() {
     const endPoint = '/planets/';
