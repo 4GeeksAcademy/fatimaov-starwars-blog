@@ -1,6 +1,6 @@
 const baseUrl = 'https://swapi.dev/api/'
 
-export async function getCharacters() {
+export async function getPeople() {
     const endPoint = '/people/';
     const urlToFetch = baseUrl + endPoint;
 
@@ -10,7 +10,7 @@ export async function getCharacters() {
         const dataList = responseJS.results;
         const dataDetail = [];
         for (const i in dataList) {
-            const characterData = {
+            const peopleData = {
                 name: dataList[i].name,
                 gender: dataList[i].gender,
                 skinColor: dataList[i].skin_color,
@@ -18,15 +18,15 @@ export async function getCharacters() {
                 eyeColor: dataList[i].eye_color,
                 height: dataList[i].height,
                 birthYear: dataList[i].birth_year,
-                id: (dataList[i].url).replace('https://swapi.dev/api/people/', '') ,
+                id: (dataList[i].url).replace('https://swapi.dev/api/', '') ,
 
             }
-            dataDetail.push(characterData)
+            dataDetail.push(peopleData)
         }
         return dataDetail;
 
     } catch (error) {
-        console.error('Get characters', error);
+        console.error('Get people', error);
     }
 }
 
@@ -50,7 +50,7 @@ export async function getPlanets() {
                 orbitalPeriod: dataList[i].orbital_period,
                 rotationPeriod: dataList[i].rotation_period,
                 diameter: dataList[i].diameter,
-                id: (dataList[i].url).replace('https://swapi.dev/api/planets/', '') ,
+                id: (dataList[i].url).replace('https://swapi.dev/api/', '') ,
             }
             dataDetail.push(planetData)
         }
@@ -82,7 +82,7 @@ export async function getVehicles() {
                 vehicleClass: dataList[i].vehicle_class,
                 length: dataList[i].length,
                 maxAtmospheringSpeed: dataList[i].max_atmosphering_speed,
-                id: (dataList[i].url).replace('https://swapi.dev/api/vehicles/', '') ,
+                id: (dataList[i].url).replace('https://swapi.dev/api/', '') ,
             }
             dataDetail.push(planetData)
         }

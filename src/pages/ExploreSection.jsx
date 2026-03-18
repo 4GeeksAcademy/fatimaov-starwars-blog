@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import CategorySlider from "../components/CategorySlider";
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import { getCharacters, getPlanets, getVehicles } from "../apiService";
+import { getPeople, getPlanets, getVehicles } from "../apiService";
 
 function ExploreSection() {
 
     const { store, dispatch } = useGlobalReducer();
-    console.log('store', store)
+    // console.log('store', store)
 
     useEffect(() => {
         async function loadData() {
-            const characters = await getCharacters();
+            const people = await getPeople();
             const planets = await getPlanets();
             const vehicles = await getVehicles();
             dispatch({
                 type: "LOAD_DATA",
                 payload: {
-                    characters: characters,
+                    people: people,
                     planets: planets,
                     vehicles: vehicles,
                 }
@@ -29,9 +29,9 @@ function ExploreSection() {
         <>
             <div className="m-5 d-flex flex-column gap-5">
                 <div>
-                    <h2>Characters</h2>
+                    <h2>people</h2>
                     <CategorySlider
-                        type={store.characters}
+                        type={store.people}
                         dataLabels={
                             {
                                 gender: 'Gender:',

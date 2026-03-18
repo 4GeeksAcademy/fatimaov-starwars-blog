@@ -1,15 +1,18 @@
 import React from "react";
 import Card from "./Card";
-import useGlobalReducer from "../hooks/useGlobalReducer";
 
-function CategorySlider({type, dataLabels}) {
-
+function CategorySlider({ type, dataLabels }) {
 
     return (
         <>
             <div className="d-flex overflow-x-scroll gap-4">
-                { type.map((element) => {
-                    return <Card key={element.id} elementData={element} dataLabels={dataLabels}/>
+                {type.map((elementData) => {
+                    return <Card
+                        key={elementData.id}
+                        elementData={elementData}
+                        dataLabels={dataLabels}
+                        id={elementData.id}
+                    />
                 })}
             </div>
         </>
