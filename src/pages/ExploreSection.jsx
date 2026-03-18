@@ -6,7 +6,6 @@ import { getPeople, getPlanets, getVehicles } from "../apiService";
 function ExploreSection() {
 
     const { store, dispatch } = useGlobalReducer();
-    // console.log('store', store)
 
     useEffect(() => {
         async function loadData() {

@@ -55,7 +55,7 @@ function Details() {
                 <div className="border-top border-danger d-flex justify-content-center column-gap-5 py-3 text-danger flex-wrap">
                     {labels.map((label, i) => {
                         return (
-                            <div className="text-center">
+                            <div key={i} className="text-center">
                                 <p className="m-0 fw-bold">{label}</p>
                                 <p>{elementData[property[i]]}</p>
                             </div>
