@@ -3,7 +3,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 
 function FavoriteButton( {element}) {
 
-    const { store, dispatch } = useGlobalReducer();
+    const { dispatch } = useGlobalReducer();
 
     function handleClick() {
         dispatch({
