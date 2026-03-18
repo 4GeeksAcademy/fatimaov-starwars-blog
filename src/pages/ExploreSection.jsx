@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import CategorySlider from "../components/CategorySlider";
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import { getCharacters, getPlanets } from "../apiService";
+import { getCharacters, getPlanets, getVehicles } from "../apiService";
 
 function ExploreSection() {
 
@@ -12,15 +12,17 @@ function ExploreSection() {
         async function loadData() {
             const characters = await getCharacters();
             const planets = await getPlanets();
+            const vehicles = await getVehicles();
             dispatch({
                 type: "LOAD_DATA",
                 payload: {
                     characters: characters,
                     planets: planets,
+                    vehicles: vehicles,
                 }
             })
         }
-        loadData()
+        loadData();
     }, [])
 
     return (
@@ -47,6 +49,19 @@ function ExploreSection() {
                             {
                                 population: 'Population:',
                                 terrain: 'Terrain:',
+                            }
+                        }
+                    />
+                </div>
+                <div>
+                    <h2>Vehicles</h2>
+                    <CategorySlider
+                        type={store.vehicles}
+                        dataLabels={
+                            {
+                                cargoCapacity: 'Cargo capacity:',
+                                passengers: 'Passengers:',
+                                vehicleClass: 'Class:',
                             }
                         }
                     />

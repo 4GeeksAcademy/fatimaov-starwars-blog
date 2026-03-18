@@ -62,6 +62,7 @@ export async function getPlanets() {
     }
 }
 
+
 export async function getVehicles() {
     const endPoint = '/vehicles/';
     const urlToFetch = baseUrl + endPoint;
@@ -69,9 +70,24 @@ export async function getVehicles() {
     try {
         const response = await fetch(urlToFetch);
         const responseJS = await response.json();
-        const data = responseJS.results;
-        console.log('vehicles', data)
-        return data
+        const dataList = responseJS.results;
+        const dataDetail = [];
+        
+        for (const i in dataList) {
+            const planetData = {
+                name: dataList[i].name,
+                cargoCapacity: dataList[i].cargo_capacity,
+                passengers: dataList[i].passengers,
+                model: dataList[i].model,
+                vehicleClass: dataList[i].vehicle_class,
+                length: dataList[i].length,
+                maxAtmospheringSpeed: dataList[i].max_atmosphering_speed,
+                id: (dataList[i].url).replace('https://swapi.dev/api/vehicles/', '') ,
+            }
+            dataDetail.push(planetData)
+        }
+        
+        return dataDetail;
 
     } catch (error) {
         console.error('Get vehicles', error);
