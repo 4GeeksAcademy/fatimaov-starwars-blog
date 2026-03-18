@@ -7,7 +7,7 @@ export async function getCharacters() {
     try {
         const response = await fetch(urlToFetch);
         const responseJS = await response.json();
-        const dataList = responseJS.results
+        const dataList = responseJS.results;
         const dataDetail = [];
         for (const i in dataList) {
             const characterData = {
@@ -38,14 +38,30 @@ export async function getPlanets() {
     try {
         const response = await fetch(urlToFetch);
         const responseJS = await response.json();
-        const data = responseJS.results;
-        console.log('planets', data)
-        return data
+        const dataList = responseJS.results;
+        const dataDetail = [];
+        
+        for (const i in dataList) {
+            const planetData = {
+                name: dataList[i].name,
+                population: dataList[i].population,
+                terrain: dataList[i].terrain,
+                climate: dataList[i].climate,
+                orbitalPeriod: dataList[i].orbital_period,
+                rotationPeriod: dataList[i].rotation_period,
+                diameter: dataList[i].diameter,
+                id: (dataList[i].url).replace('https://swapi.dev/api/planets/', '') ,
+            }
+            dataDetail.push(planetData)
+        }
+        
+        return dataDetail;
 
     } catch (error) {
         console.error('Get planets', error);
     }
 }
+
 export async function getVehicles() {
     const endPoint = '/vehicles/';
     const urlToFetch = baseUrl + endPoint;

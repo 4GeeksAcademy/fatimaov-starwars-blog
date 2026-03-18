@@ -10,13 +10,14 @@ export const initialStore = () => {
 
 export default function storeReducer(store, action = {}) {
   switch (action.type) {
-    case "GET_CHARACTERS":
+    case "LOAD_DATA":
 
-      const { characters } = action.payload
+      const { characters, planets } = action.payload
 
       return ({
         ...store,
-        characters: characters
+        characters: characters,
+        planets: planets,
   })
     default:
       throw Error('Unknown action.');
