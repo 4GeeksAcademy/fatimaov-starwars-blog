@@ -4,7 +4,7 @@ import { FavoritesDropdown } from "./FavoritesDropdown";
 export const Navbar = () => {
 
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar navbar-light bg-light sticky-top">
 			<div className="d-flex justify-content-between align-items-center w-100 mx-5">
 				<Link to="/">
 					<div className="navbar-brand mb-0 h1 w-25">

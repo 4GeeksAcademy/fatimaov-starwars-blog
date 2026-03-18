@@ -4,7 +4,7 @@ function FavoriteButton() {
 
     return (
         <>
-            <button>Fav</button>
+            <button className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></button>
         </>
     )
 }
