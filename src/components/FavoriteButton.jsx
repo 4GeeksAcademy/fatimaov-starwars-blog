@@ -1,10 +1,20 @@
 import React from "react";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
-function FavoriteButton() {
+function FavoriteButton( {element}) {
+
+    const { store, dispatch } = useGlobalReducer();
+
+    function handleClick() {
+        dispatch({
+            type: "ADD_FAVORITE",
+            payload: {element: element},
+        })
+    }
 
     return (
         <>
-            <button className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></button>
+            <button onClick={handleClick} className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></button>
         </>
     )
 }

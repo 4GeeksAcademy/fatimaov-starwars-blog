@@ -1,11 +1,11 @@
 export const initialStore = () => {
   return {
-      people: [],
-      planets: [],
-      vehicles: [],
-      favs: [],
-    }
-  ;
+    people: [],
+    planets: [],
+    vehicles: [],
+    favs: [],
+  }
+    ;
 }
 
 export default function storeReducer(store, action = {}) {
@@ -19,7 +19,18 @@ export default function storeReducer(store, action = {}) {
         people: people,
         planets: planets,
         vehicles: vehicles,
-  })
+      })
+
+    case "ADD_FAVORITE":
+
+      const { element } = action.payload;
+      
+      return ({
+        ...store,
+        favs: store.favs.includes(element) ? store.favs : [...store.favs, element]
+      });
+
+
     default:
       throw Error('Unknown action.');
   }

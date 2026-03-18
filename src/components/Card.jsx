@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import FavoriteButton from "./FavoriteButton";
 
 function Card({ elementData, dataLabels, id }) {
+    
 
     const labels = Object.values(dataLabels)
     const property = Object.keys(dataLabels)
@@ -22,7 +23,7 @@ function Card({ elementData, dataLabels, id }) {
                     </div>
                     <div className="d-flex justify-content-between">
                         <Link className="btn btn-outline-primary m-0" to={`details/${id}`}>Learn More!</Link>
-                        <FavoriteButton />
+                        <FavoriteButton element={elementData.name} />
                     </div>
                 </div>
             </div>
