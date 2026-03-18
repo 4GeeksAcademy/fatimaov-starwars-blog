@@ -29,7 +29,7 @@ function ExploreSection() {
         <>
             <div className="m-5 d-flex flex-column gap-5">
                 <div>
-                    <h2>people</h2>
+                    <h2 className="text-danger fw-bold mb-4">People</h2>
                     <CategorySlider
                         type={store.people}
                         dataLabels={
@@ -42,7 +42,7 @@ function ExploreSection() {
                     />
                 </div>
                 <div>
-                    <h2>Planets</h2>
+                    <h2 className="text-danger fw-bold mb-4">Planets</h2>
                     <CategorySlider
                         type={store.planets}
                         dataLabels={
@@ -54,7 +54,7 @@ function ExploreSection() {
                     />
                 </div>
                 <div>
-                    <h2>Vehicles</h2>
+                    <h2 className="text-danger fw-bold mb-4">Vehicles</h2>
                     <CategorySlider
                         type={store.vehicles}
                         dataLabels={
